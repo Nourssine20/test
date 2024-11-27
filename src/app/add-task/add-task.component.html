@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Task</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="stacked">Title</ion-label>
+      <ion-input formControlName="title" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Description</ion-label>
+      <ion-input formControlName="description" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Priority</ion-label>
+      <ion-select formControlName="priority" required>
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+        <ion-select-option value="5">5</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Due Date</ion-label>
+      <ion-datetime formControlName="due_date" required></ion-datetime>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" [disabled]="taskForm.invalid">
+      Add Task
+    </ion-button>
+
+    <ion-button expand="full" color="light" (click)="onCancel()">Cancel</ion-button>
+  </form>
+</ion-content>

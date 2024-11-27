@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Task List</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToAddTask()">Add Task</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <!-- Table header -->
+      <ion-col size="3">
+        <strong>Title</strong>
+      </ion-col>
+      <ion-col size="3">
+        <strong>Description</strong>
+      </ion-col>
+      <ion-col size="2">
+        <strong>Priority</strong>
+      </ion-col>
+      <ion-col size="2">
+        <strong>Due Date</strong>
+      </ion-col>
+      <ion-col size="2">
+        <strong>Actions</strong>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let task of tasks">
+      <!-- Task row -->
+      <ion-col size="3">
+        {{ task.title }}
+      </ion-col>
+      <ion-col size="3">
+        {{ task.description }}
+      </ion-col>
+      <ion-col size="2">
+        {{ task.priority }}
+      </ion-col>
+      <ion-col size="2">
+        {{ task.due_date | date }}
+      </ion-col>
+      <ion-col size="2">
+        <ion-button fill="clear" (click)="goToEditTask(task.id)">Edit</ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteTask(task.id)">Delete</ion-button>
+        <a [routerLink]="['/tasks', task.id]">Details</a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

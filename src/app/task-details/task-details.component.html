@@ -1,0 +1,50 @@
+<div *ngIf="loading" class="loading">
+  <p>Loading task details...</p>
+</div>
+
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+
+<div *ngIf="task" class="task-table">
+  <ion-grid>
+    <ion-row>
+      <!-- Table header -->
+      <ion-col size="4">
+        <strong>Field</strong>
+      </ion-col>
+      <ion-col size="8">
+        <strong>Details</strong>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="4">Title</ion-col>
+      <ion-col size="8">{{ task.title }}</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="4">Description</ion-col>
+      <ion-col size="8">{{ task.description }}</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="4">Status</ion-col>
+      <ion-col size="8">{{ task.completed ? 'Completed' : 'Pending' }}</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="4">Priority</ion-col>
+      <ion-col size="8">{{ task.priority }}</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="4">Due Date</ion-col>
+      <ion-col size="8">{{ task.due_date | date }}</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="card-footer">
+    <button (click)="goBack()">Back to Task List</button>
+  </div>
+</div>
